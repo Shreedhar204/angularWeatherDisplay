@@ -11,6 +11,8 @@ export class GeolocationService {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             console.log('Geolocation success:');
+
+            console.log(position);
             console.log('Latitude:', position.coords.latitude);
             console.log('Longitude:', position.coords.longitude);
             console.log('Accuracy (meters):', position.coords.accuracy);
