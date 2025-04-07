@@ -10,12 +10,6 @@ export class GeolocationService {
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            console.log('Geolocation success:');
-
-            console.log(position);
-            console.log('Latitude:', position.coords.latitude);
-            console.log('Longitude:', position.coords.longitude);
-            console.log('Accuracy (meters):', position.coords.accuracy);
             observer.next(position);
             observer.complete();
           },
@@ -24,7 +18,7 @@ export class GeolocationService {
           }
         );
       } else {
-        observer.error('Geolocation is not available in this browser.');
+        observer.error('Geolocation was denied.');
       }
     });
   }

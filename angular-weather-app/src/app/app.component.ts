@@ -34,11 +34,9 @@ export class AppComponent implements OnInit {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
         this.fetchWeather();
-
-        // console.log('AppComponent got location:', latitude, longitude);
       },
       error: (err) => {
-        console.error('Could not get location:', err);
+        alert('Error: Failed to get location information: ' + err.message);
       },
     });
   }
@@ -51,14 +49,11 @@ export class AppComponent implements OnInit {
           next: (weather) => {
             this.temperature = weather.current.temperature_2m;
             this.units = weather.current_units.temperature_2m;
-            console.log(weather);
           },
-          error: (err) => {
-            console.error('Could not get weather:', err);
+          error: () => {
+            alert('Error: Failed to get weather information.');
           },
         });
-    } else {
-      console.error('Could not get weather');
     }
   }
 
