@@ -8,8 +8,13 @@ import { Observable } from 'rxjs';
 export class WeatherService {
   constructor(private http: HttpClient) {}
 
-  getWeather(latitude: number, longitude: number): Observable<any> {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m`;
+  getWeather(
+    latitude: number,
+    longitude: number,
+    unit: string
+  ): Observable<any> {
+    const tempUnit = unit === 'c' ? 'celsius' : 'fahrenheit';
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m&temperature_unit=${tempUnit}`;
     return this.http.get(url);
   }
 }

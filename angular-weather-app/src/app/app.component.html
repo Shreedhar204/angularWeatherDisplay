@@ -29,13 +29,10 @@
 
   .h1 {
     font-size: xx-large;
-    font
   }
 </style>
 
 <main class="main">
-  <!-- <div>Hellow world</div>
-  <div>temp: {{ temperature }}</div> -->
   <mat-card class="card" appearance="outlined">
     <mat-card-header>
       <mat-card-title-group>
@@ -45,16 +42,19 @@
     </mat-card-header>
     <mat-card-content>
       <h1>{{ temperature }} {{ units }}</h1>
+      <section>
+        <h3>Unit selection</h3>
+        <mat-button-toggle-group
+          name="tempUnit"
+          [value]="unitSelected"
+          (change)="onUnitToggle($event.value)"
+        >
+          <mat-button-toggle value="c">Celsius</mat-button-toggle>
+          <mat-button-toggle value="f">Fahrenheit</mat-button-toggle>
+        </mat-button-toggle-group>
+      </section>
     </mat-card-content>
   </mat-card>
 </main>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <router-outlet />
